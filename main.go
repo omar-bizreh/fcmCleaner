@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/omar-bizreh/fcmCleaner/application/appservices"
 	"github.com/omar-bizreh/fcmCleaner/application/router"
 )
 
@@ -15,8 +14,8 @@ func initRoutes() {
 }
 
 func initService() {
-	envLoader := appservices.NewEnvLoader()
-	envLoader.Load()
+	// envLoader := appservices.NewEnvLoader()
+	// envLoader.Load()
 	initRoutes()
 }
 

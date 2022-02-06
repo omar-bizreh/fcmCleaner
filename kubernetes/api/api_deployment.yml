@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fcmcleanerapi-deploy
+spec:
+  selector:
+    matchLabels:
+      app: fcmcleanerapi
+  minReadySeconds: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: fcmcleanerapi
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: fcmcleanerapi
+          image: localhost:32000/fcm-cleaner:r5
+          env:
+            - name: supportEmail
+              valueFrom:
+                configMapKeyRef:
+                  name: fcmcleaner-configmap
+                  key: supportEmail
+            - name: recieverEmail
+              valueFrom:
+                configMapKeyRef:
+                  name: fcmcleaner-configmap
+                  key: recieverEmail
+            - name: port
+              valueFrom:
+                configMapKeyRef:
+                  name: fcmcleaner-configmap
+                  key: port
+            - name: db_ip
+              valueFrom:
+                configMapKeyRef:
+                  name: fcmcleaner-configmap
+                  key: db_ip
+            - name: fcmAuthKey
+              valueFrom:
+                secretKeyRef:
+                  name: fcmcleaner-secret
+                  key: fcmAuthKey
+            - name: db_pass
+              valueFrom:
+                secretKeyRef:
+                  name: fcmcleaner-secret
+                  key: db_pass
+            - name: db_name
+              valueFrom:
+                secretKeyRef:
+                  name: fcmcleaner-secret
+                  key: db_name
+            - name: supportAuth
+              valueFrom:
+                secretKeyRef:
+                  name: fcmcleaner-secret
+                  key: supportAuth
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8081

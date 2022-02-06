@@ -3,6 +3,7 @@ package home
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 
@@ -57,7 +58,7 @@ func rootRotue(w http.ResponseWriter, r *http.Request) {
 func sendEmail(msg string) {
 	fmt.Println("MESSAGE: " + msg)
 	mailService := new(appservices.MailService)
-	mailService.SendEmail("omar@github.com", "FCM Cleaning Service", msg)
+	mailService.SendEmail(os.Getenv("recieverEmail"), "FCM Cleaning Service", msg)
 }
 
 // Init initailize home routes

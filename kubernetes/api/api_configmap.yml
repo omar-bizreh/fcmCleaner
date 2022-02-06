@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fcmcleaner-configmap
+data:
+  supportEmail: EMAIL
+  recieverEmail: EMAIL
+  port: "8081"
+  db_ip: IP
