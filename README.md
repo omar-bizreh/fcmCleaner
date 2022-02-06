@@ -4,7 +4,7 @@ Simple service to connect to database, read available FCM Tokens and perform a d
 
 ## Requirements
 
-- [golang](https://go.dev/)
+- [golang](https://go.dev/) `v1.17.6`
 
 ## Dependencies
 
