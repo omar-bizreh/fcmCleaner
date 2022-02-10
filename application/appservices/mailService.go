@@ -19,7 +19,6 @@ func (service *MailService) SendEmail(to string, subject string, body string) {
 	strBuilder.WriteString("From: Support" + "<" + from + ">\n")
 	strBuilder.WriteString("Subject: FCM Tokens Report\n")
 	strBuilder.WriteString(body)
-	//tgwxobaqzrqxvoaj
 
 	err := smtp.SendMail("smtp.gmail.com:587", smtp.PlainAuth("", from, os.Getenv("supportAuth"), "smtp.gmail.com"), from, []string{to}, []byte(strBuilder.String()))
 	if err != nil {
