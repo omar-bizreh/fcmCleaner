@@ -14,3 +14,8 @@ fcmCleaner
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
+.terraform/
+.terraform.lock.hcl
+dev-plan
+dev-plan-destroy
+*.backup
