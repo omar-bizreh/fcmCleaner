@@ -4,11 +4,11 @@ jobs:
   build:
     runs-on: "ubuntu-latest"
     steps:
+      - name: "zip artifact"
       - uses: actions/checkout@v2
       - run: zip -r fcmcleaner.zip *
-  publish:
-    runs-on: "ubuntu-latest"
-    steps:
+
+      - name: "upload artifact"
       - uses: actions/upload-artifact@v3
         with:
           name: fcm-cleaner-artifact
