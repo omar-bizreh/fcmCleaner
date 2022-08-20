@@ -7,11 +7,14 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
 
-      - name: zip artifact
-        run: zip -r fcmcleaner.zip *
+      - name: build executable
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: "go.mod"
+        run: go build -o fcmcleaner
 
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: fcm-cleaner-artifact
-          path: .
+          path: fcmcleaner
