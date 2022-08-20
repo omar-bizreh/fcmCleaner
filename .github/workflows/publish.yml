@@ -4,8 +4,8 @@ jobs:
   build:
     runs-on: "ubuntu-latest"
     steps:
-      - name: "zip artifact"
       - uses: actions/checkout@v2
+      - name: "zip artifact"
       - run: zip -r fcmcleaner.zip *
 
       - name: "upload artifact"
