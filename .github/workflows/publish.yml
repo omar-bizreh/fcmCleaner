@@ -7,8 +7,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: "zip artifact"
       - run: zip -r fcmcleaner.zip *
-
-      - name: "upload artifact"
       - uses: actions/upload-artifact@v3
         with:
           name: fcm-cleaner-artifact
